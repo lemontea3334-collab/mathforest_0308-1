@@ -38,10 +38,11 @@
   .logo-main span { color: var(--gold-500); }
   .logo-sub { font-size: 9px; font-weight: 700; color: var(--forest-600); letter-spacing: 3px; text-transform: uppercase; margin-top: 3px; }
 
-  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links { display: flex; align-items: center; gap: 12px; }
   .nav-links a { font-size: 14px; font-weight: 700; color: #555; text-decoration: none; transition: color .2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .nav-links a:hover, .nav-links a.active { color: var(--forest-600); }
-  .nav-btn { padding: 10px 22px; background: var(--forest-600); color: #fff; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all .25s; white-space: nowrap; flex-shrink: 0; }
+  .nav-divider { font-size: 14px; color: #ccc; font-weight: 300; }
+  .nav-btn { padding: 10px 22px; background: var(--forest-600); color: #fff; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all .25s; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.3px; }
 
   /* ── FLOATING CTA ── */
   .floating-cta { display: none; position: fixed; bottom: 20px; left: 16px; right: 16px; z-index: 90; opacity: 0; transform: translateY(60px); transition: all .3s; }
@@ -153,26 +154,28 @@
   .reveal-delay-1 { transition-delay: .1s; }
   .reveal-delay-2 { transition-delay: .2s; }
 
-  /* 📱 모바일 반응형 최적화 (메뉴 및 간격 대폭 조정) */
+  /* 📱 모바일 반응형 최적화 */
   @media (max-width: 900px) { 
     .step-container { grid-template-columns: 1fr; gap: 20px; } 
     .curr-banner { flex-direction: column; }
     .banner-img-wrap { min-height: 200px; }
   }
   @media (max-width: 768px) { 
-    /* 1. 상단 메뉴 가로 스크롤 동기화 */
+    /* 1. 상단 메뉴 최적화 (로고 왼쪽 정렬 유지, 스크롤 메뉴, 구분선) */
     .nav-inner { flex-direction: column; padding: 12px 20px; gap: 12px; align-items: flex-start; }
-    .logo-wrap { align-self: center; margin-bottom: 4px; }
+    .logo-wrap { align-self: flex-start; margin-bottom: 4px; text-align: left; width: 100%; }
     .nav-links {
       display: flex; overflow-x: auto; width: 100%; justify-content: flex-start;
-      padding-bottom: 8px; white-space: nowrap; gap: 16px;
+      padding-bottom: 8px; white-space: nowrap; gap: 10px;
       -webkit-overflow-scrolling: touch;
+      align-items: center;
     }
     .nav-links::-webkit-scrollbar { display: none; }
     nav { height: auto !important; padding-bottom: 5px; }
 
-    /* 2. 모바일 섹션 간격(Padding/Margin) 대폭 축소 */
+    /* 2. 모바일 섹션 간격 대폭 축소 및 배경 잘림 방지 적용 */
     .sub-header { padding: 120px 20px 40px; }
+    .sub-header::before { width: 400px; height: 400px; top: -10%; } /* 배경 잘림 방지 */
     .curriculum { padding: 40px 20px 60px; }
     .curr-intro { margin-bottom: 40px; }
     
@@ -203,13 +206,17 @@
       <span class="logo-main">모여봐요 수학의<span>숲</span></span>
       <span class="logo-sub">수학전문교습소</span>
     </a>
-    <!-- 모바일 가로 스크롤 메뉴 적용 완료 -->
+    <!-- 모바일 가로 스크롤 메뉴 및 글자 단축, 구분선(/) 적용 완료 -->
     <div class="nav-links">
       <a href="index.html">홈</a>
+      <span class="nav-divider">/</span>
       <a href="about.html">원장 소개</a>
+      <span class="nav-divider">/</span>
       <a href="curriculum.html" class="active">학습 시스템</a>
-      <a href="faq.html">자주 묻는 질문</a>
-      <button class="nav-btn" onclick="alert('홈 화면에서 이용 가능합니다.')">무료 유형진단</button>
+      <span class="nav-divider">/</span>
+      <a href="faq.html">Q&A</a>
+      <span class="nav-divider">/</span>
+      <button class="nav-btn" onclick="alert('홈 화면에서 이용 가능합니다.')">성향진단</button>
     </div>
   </div>
 </nav>

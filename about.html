@@ -38,10 +38,11 @@
   .logo-main span { color: var(--gold-500); }
   .logo-sub { font-size: 9px; font-weight: 700; color: var(--forest-600); letter-spacing: 3px; text-transform: uppercase; margin-top: 3px; }
 
-  .nav-links { display: flex; align-items: center; gap: 24px; }
+  .nav-links { display: flex; align-items: center; gap: 12px; }
   .nav-links a { font-size: 14px; font-weight: 700; color: #555; text-decoration: none; transition: color .2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .nav-links a:hover, .nav-links a.active { color: var(--forest-600); }
-  .nav-btn { padding: 10px 22px; background: var(--forest-600); color: #fff; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all .25s; white-space: nowrap; flex-shrink: 0; }
+  .nav-divider { font-size: 14px; color: #ccc; font-weight: 300; }
+  .nav-btn { padding: 10px 22px; background: var(--forest-600); color: #fff; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all .25s; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.3px; }
 
   /* ── FLOATING CTA ── */
   .floating-cta { display: none; position: fixed; bottom: 20px; left: 16px; right: 16px; z-index: 90; opacity: 0; transform: translateY(60px); transition: all .3s; }
@@ -94,9 +95,11 @@
   .promise-card { background: rgba(255,255,255,0.03); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 36px; padding: 64px 36px; backdrop-filter: blur(12px); transition: all 0.4s ease; display: flex; flex-direction: column; align-items: center; }
   .promise-card:hover { transform: translateY(-12px); background: rgba(255,255,255,0.06); border-color: var(--gold-500); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
   
-  .promise-header { position: relative; margin-bottom: 36px; width: 96px; height: 96px; display: flex; align-items: center; justify-content: center; }
-  .promise-num-badge { position: absolute; top: -5px; right: -5px; width: 34px; height: 34px; background: var(--gold-500); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 2; }
-  .promise-icon { width: 84px; height: 84px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-400); transition: all 0.3s ease; border: 1px solid rgba(212,160,23,0.15); }
+  /* 아이콘 및 둥근 배경, 숫자 배지 크기 축소 적용 완료 */
+  .promise-header { position: relative; margin-bottom: 28px; width: 76px; height: 76px; display: flex; align-items: center; justify-content: center; }
+  .promise-num-badge { position: absolute; top: -4px; right: -4px; width: 28px; height: 28px; background: var(--gold-500); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 800; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 2; }
+  .promise-icon { width: 68px; height: 68px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-400); transition: all 0.3s ease; border: 1px solid rgba(212,160,23,0.15); }
+  .promise-icon svg { width: 32px; height: 32px; }
   .promise-card:hover .promise-icon { transform: scale(1.1); color: #fff; background: var(--forest-700); }
   
   .promise-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--gold-400); letter-spacing: -0.5px; }
@@ -135,21 +138,23 @@
   .reveal-delay-1 { transition-delay: .1s; }
   .reveal-delay-2 { transition-delay: .2s; }
 
-  /* 📱 모바일 반응형 최적화 (메뉴 및 간격 대폭 조정) */
+  /* 📱 모바일 반응형 최적화 */
   @media (max-width: 768px) { 
-    /* 1. 상단 메뉴 가로 스크롤 적용 */
+    /* 1. 모바일 메뉴 최적화 (로고 왼쪽 정렬 유지, 스크롤 메뉴) */
     .nav-inner { flex-direction: column; padding: 12px 20px; gap: 12px; align-items: flex-start; }
-    .logo-wrap { align-self: center; margin-bottom: 4px; }
+    .logo-wrap { align-self: flex-start; margin-bottom: 4px; text-align: left; width: 100%; }
     .nav-links {
       display: flex; overflow-x: auto; width: 100%; justify-content: flex-start;
-      padding-bottom: 8px; white-space: nowrap; gap: 16px;
+      padding-bottom: 8px; white-space: nowrap; gap: 10px;
       -webkit-overflow-scrolling: touch;
+      align-items: center;
     }
     .nav-links::-webkit-scrollbar { display: none; }
     nav { height: auto !important; padding-bottom: 5px; }
 
-    /* 2. 모바일 섹션 간격 축소 */
+    /* 2. 모바일 섹션 간격 축소 및 배경 잘림 방지 적용 완료 */
     .sub-header { padding: 120px 20px 40px; } 
+    .sub-header::before { width: 400px; height: 400px; top: -10%; } 
     .about { padding: 40px 20px 60px; } 
     .about-header { margin-bottom: 40px; }
     .about-header p { font-size: 15px; }
@@ -185,10 +190,14 @@
     </a>
     <div class="nav-links">
       <a href="index.html">홈</a>
+      <span class="nav-divider">/</span>
       <a href="about.html" class="active">원장 소개</a>
+      <span class="nav-divider">/</span>
       <a href="curriculum.html">학습 시스템</a>
-      <a href="faq.html">자주 묻는 질문</a>
-      <button class="nav-btn" onclick="alert('홈 화면에서 이용 가능합니다.')">무료 유형진단</button>
+      <span class="nav-divider">/</span>
+      <a href="faq.html">Q&A</a>
+      <span class="nav-divider">/</span>
+      <button class="nav-btn" onclick="alert('홈 화면에서 이용 가능합니다.')">성향진단</button>
     </div>
   </div>
 </nav>
