@@ -363,7 +363,7 @@
   <p class="f-copy">© 2024 Math Forest. All rights reserved.</p>
 </footer>
 
-<!-- LIGHTBOX MODAL (추가된 부분) -->
+<!-- LIGHTBOX MODAL (이미지 클릭 시 확대) -->
 <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
   <img src="" class="lightbox-img" id="lightboxImg" alt="확대된 이미지">
@@ -381,14 +381,12 @@ function openLightbox(src) {
   const img = document.getElementById('lightboxImg');
   img.src = src;
   overlay.style.display = 'flex';
-  // 애니메이션 부드럽게 나타나게 하기 위함
   void overlay.offsetWidth; 
   overlay.classList.add('show');
-  document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+  document.body.style.overflow = 'hidden'; 
 }
 
 function closeLightbox(event) {
-  // 이미지 밖의 어두운 배경이나 X버튼을 눌렀을 때만 닫히도록 설정
   if (event && event.target !== document.getElementById('lightboxOverlay') && event.target !== document.querySelector('.lightbox-close')) {
     return;
   }
@@ -396,8 +394,8 @@ function closeLightbox(event) {
   overlay.classList.remove('show');
   setTimeout(() => {
     overlay.style.display = 'none';
-    document.body.style.overflow = ''; // 배경 스크롤 복구
-  }, 300); // CSS 애니메이션 시간과 일치
+    document.body.style.overflow = ''; 
+  }, 300); 
 }
 </script>
 </body>
