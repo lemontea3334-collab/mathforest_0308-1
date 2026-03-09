@@ -42,7 +42,6 @@
   .nav-links a { font-size: 14px; font-weight: 700; color: #555; text-decoration: none; transition: color .2s; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
   .nav-links a:hover, .nav-links a.active { color: var(--forest-600); }
   .nav-divider { font-size: 14px; color: #ccc; font-weight: 300; }
-  .nav-btn { padding: 10px 22px; background: var(--forest-600); color: #fff; font-size: 13px; font-weight: 700; border: none; border-radius: 100px; cursor: pointer; transition: all .25s; white-space: nowrap; flex-shrink: 0; letter-spacing: -0.3px; }
 
   /* ── FLOATING CTA ── */
   .floating-cta { display: none; position: fixed; bottom: 20px; left: 16px; right: 16px; z-index: 90; opacity: 0; transform: translateY(60px); transition: all .3s; }
@@ -51,7 +50,7 @@
 
   /* ── SUBPAGE HEADER ── */
   .sub-header { padding: 140px 28px 60px; background: var(--forest-50); text-align: center; position: relative; overflow: hidden; }
-  .sub-header::before { content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(179,217,179,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .sub-header::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(179,217,179,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
   .sub-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; color: var(--forest-900); position: relative; z-index: 1; letter-spacing: -1px; word-break: keep-all; }
 
   /* ── CURRICULUM SECTION ── */
@@ -161,7 +160,7 @@
     .banner-img-wrap { min-height: 200px; }
   }
   @media (max-width: 768px) { 
-    /* 1. 상단 메뉴 최적화 (로고 왼쪽 정렬 유지, 스크롤 메뉴, 구분선) */
+    /* 1. 상단 메뉴 최적화 (로고 왼쪽 정렬 유지, 스크롤 메뉴, 성향진단 삭제, 블로그 적용) */
     .nav-inner { flex-direction: column; padding: 12px 20px; gap: 12px; align-items: flex-start; }
     .logo-wrap { align-self: flex-start; margin-bottom: 4px; text-align: left; width: 100%; }
     .nav-links {
@@ -173,9 +172,9 @@
     .nav-links::-webkit-scrollbar { display: none; }
     nav { height: auto !important; padding-bottom: 5px; }
 
-    /* 2. 모바일 섹션 간격 대폭 축소 및 배경 잘림 방지 적용 */
+    /* 2. 모바일 섹션 간격 축소 및 배경 잘림 방지 적용 완료 */
     .sub-header { padding: 120px 20px 40px; }
-    .sub-header::before { width: 400px; height: 400px; top: -10%; } /* 배경 잘림 방지 */
+    .sub-header::before { width: 500px; height: 500px; top: 10%; } /* 배경 잘림 방지 최적화 */
     .curriculum { padding: 40px 20px 60px; }
     .curr-intro { margin-bottom: 40px; }
     
@@ -206,7 +205,6 @@
       <span class="logo-main">모여봐요 수학의<span>숲</span></span>
       <span class="logo-sub">수학전문교습소</span>
     </a>
-    <!-- 모바일 가로 스크롤 메뉴 및 글자 단축, 구분선(/) 적용 완료 -->
     <div class="nav-links">
       <a href="index.html">홈</a>
       <span class="nav-divider">/</span>
@@ -216,7 +214,7 @@
       <span class="nav-divider">/</span>
       <a href="faq.html">Q&A</a>
       <span class="nav-divider">/</span>
-      <button class="nav-btn" onclick="alert('홈 화면에서 이용 가능합니다.')">성향진단</button>
+      <a href="https://m.blog.naver.com/mathforest19" target="_blank">블로그</a>
     </div>
   </div>
 </nav>
